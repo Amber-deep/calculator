@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+    <section>
+        <div class="main">
+            <div class="align">
+                <input type="text" id="type" class="output">
+        </div>
+        <div class="button">
+            <button onclick="clearval()">C</button>
+            <button onclick="bkspace()">B</button>
+            <button onclick="perform('%')">%</button>
+            <button onclick="perform('^')" class="color">^</button>
+        </div>
+        <div class="button">
+            <button onclick="saveinput('7')">7</button>
+            <button onclick="saveinput('8')">8</button>
+            <button onclick="saveinput('9')">9</button>
+            <button onclick="perform('+')" class="color">+</button>
+        </div>
+        <div class="button">
+            <button onclick="saveinput('4')">4</button>
+            <button onclick="saveinput('5')">5</button>
+            <button onclick="saveinput('6')">6</button>
+            <button onclick="perform('-')" class="color">-</button>
+        </div>
+        <div class="button">
+            <button onclick="saveinput('1')">1</button>
+            <button onclick="saveinput('2')">2</button>
+            <button onclick="saveinput('3')">3</button>
+            <button onclick="perform('*')" class="color">*</button>
+        </div>
+        <div class="button">
+            <button onclick="saveinput('0')">0</button>
+            <button onclick="saveinput('.')">.</button>
+            <button onclick="calculatebtn()" class="color">=</button>
+            <button onclick="perform('/')" class="color">/</button>
+        </div>
+        </div>
+    </section>
+    <script>
+        function clearval(){
+            document.getElementById('type').value = "";
+        }
+
+        // function saveinput1(y){
+        //     document.getElementById("type").value = y;
+        // }
+        function perform(z){
+            let type = document.getElementById("type").value;
+            let calclength = type.length;
+            let lastvalue = type[calclength-1];
+            
+            if(lastvalue == "+" || lastvalue == "-" || lastvalue == "*" || lastvalue == "/"){
+                let type = document.getElementById("type").value;
+                let calclength = type.length;
+                let lastvalue = type.substring(0,calclength-1);
+                document.getElementById('type').value = lastvalue;
+                document.getElementById("type").value += z;
+            }
+            else{
+                document.getElementById("type").value += z;
+            }
+           
+        }
+        
+        function saveinput(x){
+            document.getElementById("type").value += x;
+            // let type = document.getElementById("type").value;
+            // let calclength = type.length;
+            // let lastvalue = type[calclength-1];
+            // console.log(lastvalue);
+            // document.getElementById('type').value = lastvalue;
+        }
+        // function calculatebtn(){
+        //     let type = document.getElementById("type").value;
+        //     let calclength = type.length;
+        //     let lastvalue = type.substring(0,calclength-1);
+        //     document.getElementById('type').value = lastvalue;
+        //     document.getElementById("type").value = eval(document.getElementById("type").value);
+        // }
+        function calculatebtn(){
+            let type = document.getElementById("type").value;
+            let calclength = type.length;
+            let lastvalue = type[calclength-1];
+            
+            if(lastvalue == "+" || lastvalue == "-" || lastvalue == "*" || lastvalue == "/"){
+                let type = document.getElementById("type").value;
+                let calclength = type.length;
+                let lastvalue = type.substring(0,calclength-1);
+                document.getElementById('type').value = lastvalue;
+                document.getElementById("type").value = eval(document.getElementById("type").value);
+            }
+            else{
+                document.getElementById("type").value = eval(document.getElementById("type").value);
+            }
+           
+        }
+   
+        function bkspace(){
+            let type = document.getElementById("type").value;
+            let calclength = type.length;
+            let lastvalue = type.substring(0,calclength-1);
+            document.getElementById('type').value = lastvalue;
+        }
+    </script>
+</body>
+</html>
